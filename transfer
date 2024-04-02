@@ -1,0 +1,20 @@
+const { CeloProvider, Kit } = require('@celo/contractkit');
+
+// 使用 CeloProvider 连接到 Celo 网络
+const web3 = new CeloProvider('https://forno.celo.org'); // 选择合适的节点
+
+// 使用 Kit 初始化一个 CeloKit 实例
+const kit = Kit.newKitFromProvider(web3);
+
+// 查询区块高度
+async function getBlockNumber() {
+    try {
+        const blockNumber = await kit.web3.eth.getBlockNumber();
+        console.log('Current block number:', blockNumber);
+    } catch (error) {
+        console.error('Error occurred:', error);
+    }
+}
+
+// 调用查询区块高度函数
+getBlockNumber();
