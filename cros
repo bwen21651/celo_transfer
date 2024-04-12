@@ -1,0 +1,26 @@
+import requests
+import json
+
+def transfer_cro(api_key, api_secret, amount, recipient_address):
+    endpoint = 'https://api.crypto.com/v2/private/create_withdrawal'
+    payload = {
+        "api_key": api_key,
+        "api_secret": api_secret,
+        "currency": "CRO",
+        "amount": amount,
+        "address": recipient_address
+    }
+    response = requests.post(endpoint, data=json.dumps(payload))
+    return response.json()
+
+# 在此替换为您的 API 密钥和密钥
+api_key = 'your_api_key'
+api_secret = 'your_api_secret'
+
+# 替换为接收者的 CRO 地址和转账金额
+recipient_address = 'recipient_address'
+amount = '10'
+
+# 执行转账
+response = transfer_cro(api_key, api_secret, amount, recipient_address)
+print(response)
